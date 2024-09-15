@@ -7,7 +7,7 @@ let validatorParams = [
     check('segundo_nombre').optional(),
     check('primer_apellido').isLength({ min: 2, max: 30}),
     check('segundo_apellido').optional(),
-    check('telefono').isLength({ min: 8, max: 15 }),
+    check('telefono').isLength({ min: 8, max: 15 }).isNumeric(),
     check('ficha').isLength({ min: 5, max: 15}),
     check('id_instructor').isLength({ min: 1, max: 100})
     ];

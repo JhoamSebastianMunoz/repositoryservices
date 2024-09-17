@@ -16,7 +16,7 @@ let update_aprendiz = async(req:Request, res:Response)=>{
         const registerUser = await UserService.updateInstructor(new User(cc, primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,email,contraseña))
         
             return res.status(200).json(
-                {status:'ok, updated the Intructor'}
+                {status:'ok, updated the Instructor'}
             );
         }catch(error:any){
             if(error && error.code == "ER_DUP_ENTRY"){

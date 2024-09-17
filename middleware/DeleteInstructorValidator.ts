@@ -2,8 +2,7 @@ import {check, validationResult} from  'express-validator';
 import {Request,Response, NextFunction} from 'express';
 
 let validatorParams =[
-    check('email').isLength({min:7, max:50}).isEmail(),
-    check('contraseña').isLength({ min: 3, max: 100})
+    check('cc').isLength({min:4, max:13})
 ];
 
 function validator(req:Request,res:Response,next:NextFunction){

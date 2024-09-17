@@ -13,7 +13,7 @@ interface JwtPayload {
 
 
 const verifyToken = async (req: Request, res: Response, next: NextFunction) => {
-    let authorization = req.header('Authorization');    
+    let authorization = req.get('Authorization');    
     if (authorization) {
         const token = authorization.split(' ')[1]        
         if (!token) {
@@ -24,16 +24,18 @@ const verifyToken = async (req: Request, res: Response, next: NextFunction) => {
         try {
             let decoded = jwt.verify(token, process.env.KEY_TOKEN as string) as JwtPayload;            
             req.body.id = decoded.data.id;
+            
             next()
         } catch (error) {
             return res.status(403).json(
                 { status: 'Unauthorized' }
             );
         }
-    }
+    }else{
     return res.status(403).json(
         { status: "The Authorization header is required"}
     );
+    }
 }
 
 

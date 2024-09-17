@@ -8,13 +8,12 @@ import UserService from '../services/UserServices';
 let delete_instructor = async (req: Request, res: Response) => {  
     try {
         const {
-            email,
-            contraseña
+            cc
         } = req.body;
-        const registerUser = await UserService.deleteInstructor(new DeleteUser(email,contraseña))
+        const registerUser = await UserService.deleteInstructor(new DeleteUser(cc))
         
         return res.status(201).json({
-            message: 'Instructor eliminado con exito',
+            message: 'Instructor eliminado con éxito',
         });
         } catch (error: any) {    
         if (error && error.code == "ER_DUP_ENTRY") {

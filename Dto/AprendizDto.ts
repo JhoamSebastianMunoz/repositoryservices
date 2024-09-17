@@ -7,13 +7,13 @@ class Aprendiz {
     private _segundo_apellido: string;
     private _telefono: string;
     private _ficha: string;
-    private _id_instructor: string
+    private _id: string
 
     constructor(
         cc: string, primer_nombre: string,
         segundo_nombre: string, primer_apellido: string,
         segundo_apellido: string,telefono: string,
-        ficha: string,id_instructor: string
+        ficha: string,id: string
     ) {
         this._cc = cc;
         this._primer_nombre = primer_nombre;
@@ -22,7 +22,7 @@ class Aprendiz {
         this._segundo_apellido = segundo_apellido;
         this._telefono= telefono;
         this._ficha = ficha;
-        this._id_instructor = id_instructor;
+        this._id = id;
     }
 
     // Getters
@@ -52,8 +52,8 @@ class Aprendiz {
     get ficha(): string {
         return this._ficha;
     }
-    get id_instructor(): string {
-        return this._id_instructor;
+    get id(): string {
+        return this._id;
     }
 
     // Setters
@@ -83,8 +83,8 @@ class Aprendiz {
     set ficha(ficha: string) {
         this._ficha = ficha;
     }
-    set id_instructor(id_instructor: string) {
-        this._id_instructor = id_instructor;
+    set id(id: string) {
+        this._id= id;
     }
 }
 

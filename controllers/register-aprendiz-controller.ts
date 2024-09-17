@@ -13,9 +13,9 @@ let register_aprendiz = async (req: Request, res: Response) => {
         segundo_apellido,
         telefono,
         ficha,
-        id_instructor
+        id
         } = req.body;
-        const registerUser = await UserService.registerAprendiz(new Aprendiz(cc, primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,telefono,ficha,id_instructor))
+        const registerUser = await UserService.registerAprendiz(new Aprendiz(cc, primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,telefono,ficha,id))
         
         return res.status(201).json(
         { status: 'Ok, registered the Aprendiz'}

@@ -17,13 +17,15 @@ class UserRepository {
         return db.execute(sql, values);
     }
     static async get(getUser : GetUser){
-      const sql = 'SELECT cc, primer_nombre,segundo_nombre, primer_apellido, segundo_apellido, email FROM directores_de_grupo WHERE email= ? AND contraseña= ?';
-      const values = [getUser.email,getUser.contraseña];        
-      return db.execute(sql, values);
-  }
+      const sql = 'SELECT cc, primer_nombre,segundo_nombre, primer_apellido, segundo_apellido, email FROM directores_de_grupo WHERE cc= ?';
+      const values = [getUser.cc]; 
+      const [rows] = await db.execute(sql, values);      
+      return [rows]
+    }
+    
     static async delete(deleteUser:DeleteUser){
-      const sql = 'DELETE FROM directores_de_grupo WHERE email= ? AND contraseña= ?';
-      const values =[deleteUser.email, deleteUser.contraseña]
+      const sql = 'DELETE FROM directores_de_grupo WHERE cc= ? ';
+      const values =[deleteUser.cc]
       return db.execute(sql,values);
     }
     static async update(updateUser: User){
@@ -33,7 +35,7 @@ class UserRepository {
     }
 
     static async login(auth: Auth){
-        const sql = 'SELECT * FROM directores_de_grupo WHERE email=?';
+        const sql = 'SELECT id, contraseña FROM directores_de_grupo WHERE email=?';
         const values = [auth.email];
         const result: any = await db.execute(sql, values);
         if (result[0].length > 0){
@@ -47,14 +49,15 @@ class UserRepository {
     }
 
     static async added(aprendiz: Aprendiz){
-      const sql = 'INSERT INTO aprendices (cc, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, telefono, ficha, id_instructor) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
-      const values = [aprendiz.cc, aprendiz.primer_nombre, aprendiz.segundo_nombre, aprendiz.primer_apellido, aprendiz.segundo_apellido,aprendiz.telefono,aprendiz.ficha,aprendiz.id_instructor];        
+      const sql = 'INSERT INTO aprendices (cc, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, telefono, ficha, id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+      const values = [aprendiz.cc, aprendiz.primer_nombre, aprendiz.segundo_nombre, aprendiz.primer_apellido, aprendiz.segundo_apellido,aprendiz.telefono,aprendiz.ficha,aprendiz.id];        
       return db.execute(sql, values);
     }
     static async getAprendiz(getAprendiz : GetAprendiz){
       const sql = 'SELECT * FROM aprendices WHERE cc= ? AND ficha= ?';
-      const values = [getAprendiz.cc,getAprendiz.ficha];        
-      return db.execute(sql, values);
+      const values = [getAprendiz.cc,getAprendiz.ficha];  
+      const [rows]= await db.execute(sql, values);  
+      return [rows]
   }
     static async deleteAprendiz(deleteAprendiz : DeleteAprendiz){
       const sql = 'DELETE FROM aprendices WHERE cc= ? AND ficha= ? AND primer_nombre =?';
@@ -62,8 +65,8 @@ class UserRepository {
       return db.execute(sql, values);
   }
     static async updateAprendiz(aprendiz: Aprendiz){
-      const sql = 'UPDATE aprendices SET primer_nombre=?, segundo_nombre=?, primer_apellido=?, segundo_apellido=?, telefono=?, ficha=?, id_instructor=? WHERE cc=?';
-  const values = [aprendiz.primer_nombre, aprendiz.segundo_nombre, aprendiz.primer_apellido, aprendiz.segundo_apellido,aprendiz.telefono,aprendiz.ficha,aprendiz.id_instructor,aprendiz.cc];        
+      const sql = 'UPDATE aprendices SET primer_nombre=?, segundo_nombre=?, primer_apellido=?, segundo_apellido=?, telefono=?, ficha=?, id=? WHERE cc=?';
+  const values = [aprendiz.primer_nombre, aprendiz.segundo_nombre, aprendiz.primer_apellido, aprendiz.segundo_apellido,aprendiz.telefono,aprendiz.ficha,aprendiz.id,aprendiz.cc];        
       return db.execute(sql, values);
     }
 }

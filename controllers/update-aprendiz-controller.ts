@@ -12,9 +12,9 @@ let update_aprendiz = async(req:Request, res:Response)=>{
             segundo_apellido,
             telefono,
             ficha,
-            id_instructor
+            id
             } = req.body;
-            const update = await UserService.updateAprendiz(new Aprendiz(cc,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,telefono,ficha,id_instructor))
+            const update = await UserService.updateAprendiz(new Aprendiz(cc,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,telefono,ficha,id))
             return res.status(200).json(
                 {status:'ok, updated the Aprendiz'}
             );

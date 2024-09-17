@@ -15,7 +15,7 @@ let delete_aprendiz = async (req: Request, res: Response) => {
         const registerUser = await UserService.deleteAprendiz(new DeleteAprendiz(cc,ficha,primer_nombre))
         
         return res.status(201).json({
-            message: 'Aprendiz eliminado con exito',
+            message: 'Aprendiz eliminado con éxito',
         });
         } catch (error: any) {    
         if (error && error.code == "ER_DUP_ENTRY") {

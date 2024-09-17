@@ -8,10 +8,9 @@ import UserService from '../services/UserServices';
 let get_instructor = async (req: Request, res: Response) => {  
     try {
         const {
-            email,
-            contraseña
-        } = req.body;
-        const registerUser = await UserService.getInstructor(new GetUser(email,contraseña))
+            cc,
+        } = req.query;
+        const registerUser = await UserService.getInstructor(new GetUser(cc as string))
         
         return res.status(201).json(registerUser);
         } catch (error: any) {    

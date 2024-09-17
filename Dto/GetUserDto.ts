@@ -1,38 +1,22 @@
 class GetUser {
     
-    private _email: string;
-    private _contraseña: string
-
-    constructor(
-    email: string,
-        contraseña: string
-    ) {
-
-        this._email= email;
-        this._contraseña = contraseña;
-    }
+    private _cc: string;
     
+    constructor(
+    cc: string,
+    ) {
+        this._cc= cc;    
+    }   
 
-    // Getters
-
-    get email(): string {
-        return this._email;
-    }
-
-    get contraseña(): string {
-        return this._contraseña;
+    // Getter
+    get cc(): string {
+        return this._cc;
     }
 
     // Setters
-
-    set email(email: string) {
-        this._email = email;
-    }
-
-    set contraseña(contraseña: string) {
-        this._contraseña = contraseña;
-    }
-    
+    set cc(cc: string) {
+        this._cc = cc;
+    }    
 }
 
 export default GetUser;

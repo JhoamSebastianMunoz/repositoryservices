@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import UserService from '../services/UserServices';
 import DeleteAprendiz from "../Dto/DeleteAprendizDto";
-
+import AprendizService from "../services/AprendizService";
 
 
 
@@ -12,7 +12,7 @@ let delete_aprendiz = async (req: Request, res: Response) => {
             ficha,
             primer_nombre
         } = req.body;
-        const registerUser = await UserService.deleteAprendiz(new DeleteAprendiz(cc,ficha,primer_nombre))
+        const registerUser = await AprendizService.deleteAprendiz(new DeleteAprendiz(cc,ficha,primer_nombre))
         
         return res.status(201).json({
             message: 'Aprendiz eliminado con éxito',

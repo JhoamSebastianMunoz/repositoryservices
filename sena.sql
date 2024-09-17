@@ -1,8 +1,9 @@
 CREATE DATABASE sena;
 USE sena;
 
+
 CREATE TABLE directores_de_grupo(
-id_instructor INTEGER AUTO_INCREMENT PRIMARY KEY,
+id INTEGER AUTO_INCREMENT PRIMARY KEY,
 cc VARCHAR(12) NOT NULL ,
 primer_nombre VARCHAR(30) NOT NULL,
 segundo_nombre VARCHAR(30) NULL,
@@ -19,10 +20,15 @@ primer_nombre VARCHAR(30) NOT NULL,
 segundo_nombre VARCHAR(30) NULL,
 primer_apellido VARCHAR(30) NOT NULL,
 segundo_apellido VARCHAR(30) NULL,
-telefono INTEGER NULL,
-ficha INTEGER NOT NULL,
-id_instructor INTEGER,
-FOREIGN KEY (id_instructor) REFERENCES directores_de_grupo(id_instructor)
+telefono VARCHAR(15) NULL,
+ficha VARCHAR(15) NOT NULL,
+id INTEGER,
+FOREIGN KEY (id) REFERENCES directores_de_grupo(id)
 );
 select * from directores_de_grupo;
+select * from  aprendices;
+
+select * 
+from directores_de_grupo
+inner join aprendices using(id_instructor);
 

@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import Aprendiz from '../Dto/AprendizDto';
-import UserService from '../services/UserServices';
+import AprendizService from "../services/AprendizService";
 
 
 let register_aprendiz = async (req: Request, res: Response) => {  
@@ -15,7 +15,7 @@ let register_aprendiz = async (req: Request, res: Response) => {
         ficha,
         id
         } = req.body;
-        const registerUser = await UserService.registerAprendiz(new Aprendiz(cc, primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,telefono,ficha,id))
+        const registerUser = await AprendizService.registerAprendiz(new Aprendiz(cc, primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,telefono,ficha,id))
         
         return res.status(201).json(
         { status: 'Ok, registered the Aprendiz'}

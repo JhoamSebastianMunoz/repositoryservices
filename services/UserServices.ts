@@ -4,9 +4,7 @@ import GetUser from '../Dto/GetUserDto';
 import DeleteUser from '../Dto/DeleteUserDto';
 import generateHash from '../Helpers/generateHash';
 import Auth from '../Dto/AuthDto';
-import Aprendiz from '../Dto/AprendizDto';
-import GetAprendiz from '../Dto/GetAprendizDto';
-import DeleteAprendiz from '../Dto/DeleteAprendizDto';
+
 
 
 
@@ -31,18 +29,6 @@ class UserService {
         return await UserRepository.login(auth);
     }
     
-    static async registerAprendiz(aprendiz: Aprendiz){
-        return await UserRepository.added(aprendiz);
-    }
-    static async getAprendiz(getAprendiz : GetAprendiz){
-        return await UserRepository.getAprendiz(getAprendiz);
-    }
-    static async deleteAprendiz(deleteAprendiz : DeleteAprendiz){
-        return await UserRepository.deleteAprendiz(deleteAprendiz);
-    }
-    static async updateAprendiz(aprendiz: Aprendiz){
-        return await UserRepository.updateAprendiz(aprendiz);
-    }
 }
 
 export default UserService;

@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import GetAprendiz from "../Dto/GetAprendizDto";
-import UserService from '../services/UserServices';
+import AprendizService from "../services/AprendizService";
 
 
 
@@ -11,7 +11,7 @@ let get_aprendiz = async (req: Request, res: Response) => {
             cc,
             ficha
         } = req.body;
-        const registerUser = await UserService.getAprendiz(new GetAprendiz(cc,ficha))
+        const registerUser = await AprendizService.getAprendiz(new GetAprendiz(cc,ficha))
         
         return res.status(201).json(registerUser);
         } catch (error: any) {    

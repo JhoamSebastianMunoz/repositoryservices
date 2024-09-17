@@ -1,6 +1,6 @@
 import {Request, Response} from 'express';
 import Aprendiz from '../Dto/AprendizDto';
-import UserService from '../services/UserServices';
+import AprendizService from '../services/AprendizService';
 
 let update_aprendiz = async(req:Request, res:Response)=>{
     try {
@@ -14,7 +14,7 @@ let update_aprendiz = async(req:Request, res:Response)=>{
             ficha,
             id
             } = req.body;
-            const update = await UserService.updateAprendiz(new Aprendiz(cc,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,telefono,ficha,id))
+            const update = await AprendizService.updateAprendiz(new Aprendiz(cc,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,telefono,ficha,id))
             return res.status(200).json(
                 {status:'ok, updated the Aprendiz'}
             );
